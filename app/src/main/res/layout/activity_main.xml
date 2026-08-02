@@ -1,19 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<!--縦スクロール-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:stretchColumns="0,1,2"
+        android:shrinkColumns="0,1,2">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- ヘッダー行 -->
+        <TableRow
+            android:background="#DDDDDD"
+            android:padding="4dp">
+
+            <TextView
+                android:text="ID"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:text="名前"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:text="点数"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </TableRow>
+
+        <!-- データ行1 -->
+        <TableRow android:padding="4dp">
+            <TextView android:text="1" android:padding="8dp" android:gravity="center"/>
+            <TextView android:text="田中" android:padding="8dp" android:gravity="center"/>
+            <TextView android:text="85" android:padding="8dp" android:gravity="center"/>
+        </TableRow>
+
+        <!-- データ行2 -->
+        <TableRow android:padding="4dp">
+            <TextView android:text="2" android:padding="8dp" android:gravity="center"/>
+            <TextView android:text="鈴木" android:padding="8dp" android:gravity="center"/>
+            <TextView android:text="92" android:padding="8dp" android:gravity="center"/>
+        </TableRow>
+
+    </TableLayout>
+</ScrollView>

@@ -42,6 +42,10 @@ dependencies {
     implementation(libs.androidx.room3.runtime)
     ksp(libs.androidx.room3.compiler)
 
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
     implementation(libs.material)
 
     testImplementation(libs.junit)

@@ -12,6 +12,7 @@ ksp = "2.2.20-2.0.3"
 room3Common = "3.0.1"
 room3Runtime = "3.0.1"
 room3Compiler = "3.0.1"
+retrofit = "2.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,6 +26,8 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-room3-common = { group = "androidx.room3", name = "room3-common", version.ref = "room3Common" }
 androidx-room3-runtime = { group = "androidx.room3", name = "room3-runtime", version.ref = "room3Runtime" }
 androidx-room3-compiler = { group = "androidx.room3", name = "room3-compiler", version.ref = "room3Compiler" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

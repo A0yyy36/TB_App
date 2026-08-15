@@ -1,3 +1,10 @@
+import java.util.Properties
+
+val localProperties = Properties()
+localProperties.load(
+    rootProject.file("local.properties").inputStream()
+)
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.ksp)
@@ -17,6 +24,16 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "GOOGLE_BOOKS_API_KEY",
+            "\"${localProperties["GOOGLE_BOOKS_API_KEY"]}\""
+        )
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {

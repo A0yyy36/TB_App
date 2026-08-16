@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity(){
                     Log.d("ApiTest", "タイトル: ${it.volumeInfo.title}, 著者: ${it.volumeInfo.authors}")
                 }
             } catch (e: HttpException) {
-                Log.d("ApiTest", "API key length = ${BuildConfig.GOOGLE_BOOKS_API_KEY.length}")
                 Log.e("ApiTest", "HTTPエラー: ${e.code()}")
                 Log.e("ApiTest", "エラー内容: ${e.response()?.errorBody()?.string()}")
             }

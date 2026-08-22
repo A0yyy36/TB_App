@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity(){
 
     private lateinit var adapter: BookListAdapter
-    private lateinit var adapter: BookRepository
+    private lateinit var repository: BookRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

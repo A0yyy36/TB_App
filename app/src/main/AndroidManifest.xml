@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".ui.list.MainActivity"
+            android:name=".ui.search.SearchActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

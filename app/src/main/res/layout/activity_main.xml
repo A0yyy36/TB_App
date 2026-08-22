@@ -1,40 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <!--縦スクロール-->
-    <ScrollView
+    <Button
+        android:id="@+id/buttonGoToSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="本を検索して追加" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBookList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="0,1,2"
-            android:shrinkColumns="0,1,2"
-            app:layout_constraintTop_toBottomOf="@id/tableHeader">
-
-            <include layout="@layout/header"/>
-
-            <!-- データ行1 -->
-            <TableRow android:padding="4dp">
-                <TextView android:text="1" android:padding="8dp" android:gravity="center"/>
-                <TextView android:text="田中" android:padding="8dp" android:gravity="center"/>
-                <TextView android:text="85" android:padding="8dp" android:gravity="center"/>
-            </TableRow>
-
-            <!-- データ行2 -->
-            <TableRow android:padding="4dp">
-                <TextView android:text="2" android:padding="8dp" android:gravity="center"/>
-                <TextView android:text="鈴木" android:padding="8dp" android:gravity="center"/>
-                <TextView android:text="92" android:padding="8dp" android:gravity="center"/>
-            </TableRow>
-
-        </TableLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

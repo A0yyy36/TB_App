@@ -1,42 +1,46 @@
 package com.example.myapplication.ui.list
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.myapplication.BuildConfig
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.data.local.AppDatabase
-import com.example.myapplication.data.local.BookEntity
 import com.example.myapplication.data.remote.RetrofitInstance
+import com.example.myapplication.data.repository.BookRepository
+import com.example.myapplication.ui.search.SearchActivity
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
 
 class MainActivity : AppCompatActivity(){
-    override fun onCreate(saveInstanceState: Bundle?) {
-        super.onCreate(saveInstanceState)
 
+    private lateinit var adapter: BookListAdapter
+    private lateinit var adapter: BookRepository
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val db = AppDatabase.getInstance(applicationContext)
+        repository = BookRepository(db.bookDao(), RetrofitInstance.api)
 
-        // test code
+        adapter = BookListAdapter(emptyList())
+        findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerBookList).apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = this@MainActivity.adapter
+        }
+
+        findViewById<android.widget.Button>(R.id.buttonGoToSearch).setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
+
         lifecycleScope.launch {
-            try {
-                val response = RetrofitInstance.api.searchBooks(
-                    "Kotlin入門",
-                    BuildConfig.GOOGLE_BOOKS_API_KEY
-                )
-                Log.d("ApiTest", "取得件数: ${response.items?.size}")
-                response.items?.forEach {
-                    Log.d("ApiTest", "タイトル: ${it.volumeInfo.title}, 著者: ${it.volumeInfo.authors}")
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                repository.getAllBooks().collect { books ->
+                    adapter.updateList(books)
                 }
-            } catch (e: HttpException) {
-                Log.e("ApiTest", "HTTPエラー: ${e.code()}")
-                Log.e("ApiTest", "エラー内容: ${e.response()?.errorBody()?.string()}")
-            }
-            catch (e: IOException) {
-                Log.e("ApiTest", "通信そのものに失敗", e)
             }
         }
     }

@@ -19,6 +19,10 @@ class BookRepository (
         ).items ?: emptyList()
     }
 
+    suspend fun deleteBook(book: BookEntity) {
+        bookDao.delete(book)
+    }
+
     suspend fun addBook(bookItem: BookItem) {
         bookDao.insert(bookItem.toBookEntity())
     }

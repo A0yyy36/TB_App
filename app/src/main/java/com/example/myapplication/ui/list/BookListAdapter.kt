@@ -3,6 +3,7 @@ package com.example.myapplication.ui.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -10,7 +11,8 @@ import com.example.myapplication.data.local.BookEntity
 
 // BookEntityのリストをRecycleViewに表示するためのAdapter
 class BookListAdapter (
-    private var books: List<BookEntity>
+    private var books: List<BookEntity>,
+    private val onDeleteClick: (BookEntity) -> Unit
 ) : RecyclerView.Adapter<BookListAdapter.ViewHolder>() {
 
     // 一行分のViewの定義
@@ -19,6 +21,7 @@ class BookListAdapter (
         val author: TextView = view.findViewById(R.id.textAuthor)
         val publisher: TextView = view.findViewById(R.id.textPublisher)
         val publishedDate: TextView = view.findViewById(R.id.textPublishedDate)
+        val deleteButton: Button = view.findViewById(R.id.buttonDelete)
     }
 
 
@@ -36,6 +39,9 @@ class BookListAdapter (
         holder.author.text = book.author
         holder.publisher.text = book.publisher
         holder.publishedDate.text = book.publishedDate
+        holder.deleteButton.setOnClickListener {
+            onDeleteClick(book)
+        }
     }
 
     override fun getItemCount(): Int = books.size

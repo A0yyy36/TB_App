@@ -64,6 +64,9 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
         }
+        findViewById<Button>(R.id.buttonBack).setOnClickListener {
+            finish()
+        }
     }
 
 }

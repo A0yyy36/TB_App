@@ -26,7 +26,12 @@ class MainActivity : AppCompatActivity(){
         val db = AppDatabase.getInstance(applicationContext)
         repository = BookRepository(db.bookDao(), RetrofitInstance.api)
 
-        adapter = BookListAdapter(emptyList())
+        adapter = BookListAdapter(emptyList()) { book ->
+            lifecycleScope.launch {
+                repository.deleteBook(book)
+            }
+        }
+
         findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerBookList).apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = this@MainActivity.adapter

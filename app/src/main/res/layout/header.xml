@@ -5,42 +5,46 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
+    <TableRow
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <TextView
-        android:id="@+id/textTitle"
+        android:id="@+id/headerTitle"
         android:layout_width="0dp"
         android:layout_weight="8"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:ellipsize="end" />
+        android:ellipsize="end"
+        android:text="タイトル" />
 
     <TextView
-        android:id="@+id/textAuthor"
+        android:id="@+id/headerAuthor"
         android:layout_width="0dp"
         android:layout_weight="4"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:ellipsize="end" />
+        android:ellipsize="end"
+        android:text="著者" />
 
     <TextView
-        android:id="@+id/textPublisher"
+        android:id="@+id/headerPublisher"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:ellipsize="end" />
+        android:ellipsize="end"
+        android:text="出版社" />
 
     <TextView
-        android:id="@+id/textPublishedDate"
+        android:id="@+id/headerPublishedDate"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:ellipsize="end" />
+        android:ellipsize="end"
+        android:text="出版日" />
 
-    <Button
-        android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="削除" />
-
+    </TableRow>
 </LinearLayout>

@@ -1,7 +1,6 @@
 package com.example.myapplication.ui.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -57,16 +56,6 @@ class SearchActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     val results = repository.searchBooks(query, GOOGLE_BOOKS_API_KEY)
-                    Log.d("SearchActivity", "検索結果件数: ${results.size}")
-                    results.forEach { book ->
-                        Log.d(
-                            "SearchActivity",
-                            "id=${book.id}, title=${book.volumeInfo.title}, " +
-                                    "authors=${book.volumeInfo.authors}, " +
-                                    "publisher=${book.volumeInfo.publisher}, " +
-                                    "publishedDate=${book.volumeInfo.publishedDate}"
-                        )
-                    }
                     adapter.updateList(results)
                 } catch (e: Exception) {
                     Toast.makeText(this@SearchActivity, "検索に失敗しました", Toast.LENGTH_SHORT).show()

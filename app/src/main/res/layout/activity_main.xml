@@ -9,7 +9,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="本を検索して追加" />
+
+    <include
+        layout="@layout/header" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerBookList"

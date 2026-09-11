@@ -8,6 +8,6 @@ fun BookItem.toBookEntity(): BookEntity {
         title = volumeInfo.title,
         author = volumeInfo.authors?.joinToString(", ") ?: "著者不明",
         publisher = volumeInfo.publisher ?: "",
-        publishedDate= volumeInfo.publishedData ?: ""
+        publishedDate = volumeInfo.publishedDate ?: ""
     )
 }

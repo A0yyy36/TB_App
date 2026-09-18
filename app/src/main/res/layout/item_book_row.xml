@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/textTitle"
         android:layout_width="0dp"
-        android:layout_weight="8"
+        android:layout_weight="4"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:ellipsize="end" />
@@ -16,7 +16,7 @@
     <TextView
         android:id="@+id/textAuthor"
         android:layout_width="0dp"
-        android:layout_weight="4"
+        android:layout_weight="2"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:ellipsize="end" />
@@ -39,7 +39,7 @@
 
     <Button
         android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="削除" />
 

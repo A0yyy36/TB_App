@@ -24,7 +24,6 @@ class BookListAdapter (
         val deleteButton: Button = view.findViewById(R.id.buttonDelete)
     }
 
-
     // 一行分の画面の大枠
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)

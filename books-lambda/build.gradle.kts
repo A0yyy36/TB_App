@@ -9,6 +9,7 @@ repositories {
 dependencies {
     implementation("com.amazonaws:aws-lambda-java-core:1.4.0")
     implementation("com.amazonaws:aws-lambda-java-events:3.16.1")
+    implementation("com.google.code.gson:gson:2.13.0")
 }
 
 tasks.withType<JavaCompile> {

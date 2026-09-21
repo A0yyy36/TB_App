@@ -10,6 +10,9 @@ import java.util.Map;
 public class BooksHandler
         implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
+    private static final GoogleBooksClient CLIENT =
+            new GoogleBooksClient(System.getenv("GOOGLE_BOOKS_API_KEY"));
+
     @Override
     public APIGatewayProxyResponseEvent handleRequest(
             APIGatewayProxyRequestEvent event, Context context) {
@@ -21,12 +24,14 @@ public class BooksHandler
         if (q == null || q.isBlank()) {
             return response(400, "{\"message\":\"q is required\"}");
         }
-
-        String body = "{\"items\":[{\"id\":\"dummy\",\"volumeInfo\":{"
-                + "\"title\":\"固定データ\",\"authors\":[\"テスト太郎\"],"
-                + "\"publisher\":\"テスト出版\",\"publishedDate\":\"2024\","
-                + "\"imageLinks\":{\"thumbnail\":null}}}]}";
-        return response(200, body);
+        try {
+            return response(200, CLIENT.search(q, context.getLogger()));
+        } catch (GoogleBooksClient.UpstreamException e) {
+            return response(502, "{\"message\":\"upstream error\"}");
+        } catch (IllegalStateException e) {
+            context.getLogger().log("config error: " + e.getMessage());
+            return response(500, "{\"message\":\"server error\"}");
+        }
     }
 
     private APIGatewayProxyResponseEvent response(int status, String body) {

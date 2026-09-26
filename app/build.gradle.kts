@@ -30,6 +30,12 @@ android {
             "GOOGLE_BOOKS_API_KEY",
             "\"${localProperties["GOOGLE_BOOKS_API_KEY"]}\""
         )
+
+        buildConfigField(
+            "String",
+            "GATEWAY_API_KEY",
+            "\"${localProperties["GATEWAY_API_KEY"]}\""
+        )
     }
 
     buildFeatures {

@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.BuildConfig.GOOGLE_BOOKS_API_KEY
 import com.example.myapplication.R
 import com.example.myapplication.data.local.AppDatabase
 import com.example.myapplication.data.remote.RetrofitInstance
@@ -55,7 +54,7 @@ class SearchActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
                 try {
-                    val results = repository.searchBooks(query, GOOGLE_BOOKS_API_KEY)
+                    val results = repository.searchBooks(query)
                     adapter.updateList(results)
                 } catch (e: Exception) {
                     Toast.makeText(this@SearchActivity, "検索に失敗しました", Toast.LENGTH_SHORT).show()

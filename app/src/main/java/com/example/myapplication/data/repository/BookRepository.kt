@@ -13,10 +13,8 @@ class BookRepository (
 ) {
     fun getAllBooks(): Flow<List<BookEntity>> = bookDao.getAllBooks()
 
-    suspend fun searchBooks(query: String, apiKey: String): List<BookItem> {
-        return apiService.searchBooks(
-            query, apiKey
-        ).items ?: emptyList()
+    suspend fun searchBooks(query: String): List<BookItem> {
+        return apiService.searchBooks(query).items ?: emptyList()
     }
 
     suspend fun deleteBook(book: BookEntity) {

@@ -4,9 +4,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("volumes")
+    @GET("books")
     suspend fun searchBooks(
-        @Query("q") query: String,
-        @Query("key") apiKey: String
+        @Query("q") query: String
     ): BookResponse
 }

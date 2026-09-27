@@ -14,18 +14,21 @@ class SearchResultAdapter(
     private val onAddClick: (BookItem) -> Unit
 ) : RecyclerView.Adapter<SearchResultAdapter.ViewHolder>() {
 
+    // 検索結果1行分のViewを保持
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.textResultTitle)
         val author: TextView = view.findViewById(R.id.textResultAuthor)
         val addButton: Button = view.findViewById(R.id.buttonAdd)
     }
 
+    // 検索結果1行分の画面作成
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_search_result, parent, false)
         return ViewHolder(view)
     }
 
+    // 検索結果を画面に表示する処理
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val book = books[position]
         holder.title.text = book.volumeInfo.title

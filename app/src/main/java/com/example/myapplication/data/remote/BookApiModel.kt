@@ -2,10 +2,13 @@ package com.example.myapplication.data.remote
 
 /**
  * Google Books APIのJSON形式
+ * (BookResponse)
  * {
+ * (BookItem)
  *   "items": [
  *     {
  *       "id": "abc123",
+ *       (VolumeInfo)
  *       "volumeInfo": {
  *         "title": "サンプルタイトル",
  *         "authors": ["山田太郎"],
@@ -20,7 +23,7 @@ package com.example.myapplication.data.remote
  * }
  * */
 
-// APIから返ってくるJSON全体に対応する形
+// APIから返ってくる検索結果全体
 data class BookResponse(
     val items: List<BookItem>?
 )

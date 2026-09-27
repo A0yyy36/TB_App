@@ -6,6 +6,7 @@ import androidx.room3.Room
 import androidx.room3.RoomDatabase
 
 @Database(entities = [BookEntity::class], version = 1)
+// DBの入り口
 abstract class AppDatabase : RoomDatabase(){
     abstract fun bookDao(): BookDao
 

@@ -10,7 +10,7 @@ object RetrofitInstance {
     val api: ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create()) // Gson -> JsonからKotlinのDataClassに変換するライブラリ
             .build()
             .create(ApiService::class.java)
     }

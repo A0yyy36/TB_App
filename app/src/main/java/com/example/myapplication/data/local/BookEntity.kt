@@ -5,6 +5,7 @@ import androidx.room3.PrimaryKey
 
 @Entity(tableName = "books")
 
+// DBに保存する本のデータ型
 data class BookEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,

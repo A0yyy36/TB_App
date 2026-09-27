@@ -7,11 +7,12 @@ import androidx.room3.Query
 import androidx.room3.Update
 import kotlinx.coroutines.flow.Flow
 
+// DBに対して何をするのかを定義
 @Dao
 interface BookDao {
 
-    @Query("SELECT * FROM books ORDER BY id DESC")
-    fun getAllBooks(): Flow<List<BookEntity>>
+    @Query("SELECT * FROM books ORDER BY id DESC") //テーブルから本を全部取得
+    fun getAllBooks(): Flow<List<BookEntity>> // DBのデータに変化が合ったら，その新しい一覧を流す(Flow)
 
     @Insert
     suspend fun insert(book: BookEntity)

@@ -145,7 +145,7 @@ GOOGLE_BOOKS_API_KEY=取得したAPIキー
 
 ### 4. ビルド・実行
 
-Android Studioでプロジェクトを開き、通常通り実行してください。`build.gradle.kts`の`buildConfigField`経由で、`local.properties`の値が`BuildConfig.GOOGLE_BOOKS_API_KEY`として読み込まれます。
+Android Studioでプロジェクトを開き、実行してください。`build.gradle.kts`の`buildConfigField`経由で、`local.properties`の値が`BuildConfig.GOOGLE_BOOKS_API_KEY`として読み込まれます。
 
 ---
 
@@ -163,19 +163,14 @@ Android Studioでプロジェクトを開き、通常通り実行してくださ
 
 ## APIキーに関する注意
 
-このバージョンは、Google Books APIキーを`BuildConfig`経由でアプリ内に保持し、リクエスト時に直接付与する構成です。
+このバージョンは、Google Books APIキーを`BuildConfig`経由でアプリ内に保持し、リクエスト時に直接使用する構成です。
 
 `local.properties`はGitの管理対象外ですが、これはソースコード管理上の秘匿性を守るものであり、**ビルド後のAPKファイルの中身までは守りません**。実際にビルドしたAPKを`jadx-gui`などの逆コンパイルツールで開くと、`BuildConfig`クラス内にAPIキーが平文の文字列として読み取れる状態で埋め込まれています。
-
-この問題への対策(AWS Lambda・API Gateway経由への切り替えと、使用量プランによる被害限定)は、後継バージョンおよび関連記事で扱っています。
-
-- 関連記事: Kotlin×Retrofit×Roomで本管理アプリを作った話(基盤編)
-- 後継バージョン(Lambda経由版): `main`ブランチを参照
 
 ---
 
 ## 今後の展望
 
-- AWS Lambda・API Gateway経由でのAPI連携への切り替え(実施済み、`main`ブランチ参照)
-- 横スクロール + 左列固定のテーブル表示(検討中)
+- AWS Lambda・API Gateway経由でのAPI連携への切り替え(開発中)
+- 横スクロール + 左列固定のテーブル表示(未着手)
 - 本の表紙画像表示(未着手)

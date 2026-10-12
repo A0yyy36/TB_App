@@ -58,9 +58,12 @@ class SearchActivity : AppCompatActivity() {
                     val results = repository.searchBooks(query, GOOGLE_BOOKS_API_KEY)
                     adapter.updateList(results)
                 } catch (e: Exception) {
+                    if (e is retrofit2.HttpException) {
+                        android.util.Log.e("SearchActivity", "HTTP ${e.code()} body=${e.response()?.errorBody()?.string()}", e)
+                    } else {
+                        android.util.Log.e("SearchActivity", "search failed", e)
+                    }
                     Toast.makeText(this@SearchActivity, "検索に失敗しました", Toast.LENGTH_SHORT).show()
-                } finally {
-                    progressBar.visibility = View.GONE
                 }
             }
         }
